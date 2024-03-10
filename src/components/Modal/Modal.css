@@ -15,9 +15,10 @@
   background: white;
   border: 1px solid #dbdbdb;
   border-radius: 1.5rem;
-  padding: 6rem;
+  padding: 2.5rem 6rem;
   max-height: 80%;
   overflow-y: auto;
+  display: grid;
   position: relative;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -25,76 +26,130 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .close-button {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  font-size: 2rem;
-  background: #1c3e6e;
-  color: white;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
+  font-size: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  line-height: 2rem;
 }
 
-#title {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #dbdbdb;
+.close-button button {
+  background: #1c3e6e;
+  border: none;
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-content: center;
+}
+
+.close-button button:hover {
+  background-color: #0f1f3a;
+}
+
+.divider {
+  width: 281px;
+  border-bottom: 1px solid darkgray;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 #column1 {
-  grid-column: span 2;
+  grid-column: span 3;
   padding-right: 5rem;
+  padding-top: 1rem;
 }
 
 #column2 {
-  grid-column: span 1;
-}
-
-p {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
+  grid-column: span 2;
 }
 
 .bold {
   font-weight: bold;
 }
 
-.section {
-  border-bottom: 1px solid #dbdbdb;
-  padding: 0.5rem 0;
-  align-items: center;
-}
-
 .submit-button {
   padding: 0.75rem;
   border-radius: 0.5rem;
-  width: 14rem;
-  margin: 1rem;
+  width: 17rem;
+  margin: 0 1rem;
 }
 
 .radio-container {
   text-align: left;
 }
 
-.import-confirmation {
-  text-align: center;
-}
-
 .continue {
   background: #1c3e6e;
-  border: 1px solid #1c3e6e;
+  border: 2px solid #1c3e6e;
   color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+  margin: 0 1rem;
+}
+
+.continue:hover {
+  background-color: #0f1f3a;
+  border-color: #0f1f3a;
 }
 
 #cancel {
   background: white;
-  border: 1px solid #fa9c27;
-  color: #fa9c27;
+  border: 2px solid orange;
+  color: orange;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#cancel:hover {
+  background-color: sandybrown;
+  color: white;
+}
+
+.import-text {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+
+.import-text p {
+  font-size: medium;
+}
+
+h1 {
+  font-size: xx-large;
+  justify-self: center;
+  width: 281px;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid darkgray;
+}
+
+p {
+  display: flex;
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    grid-template-columns: 1fr;
+    justify-self: center;
+  }
+  .modal {
+    padding: 2rem 0;
+  }
+  #column1 {
+    padding-right: 0;
+  }
+  .import-text {
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .import-text p {
+    height: 0;
+  }
 }

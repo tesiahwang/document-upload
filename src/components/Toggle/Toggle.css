@@ -1,3 +1,4 @@
+/* Toggle.css */
 .toggle-container {
   display: flex;
   align-items: center;
@@ -6,8 +7,11 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 24px;
+  width: 40px;
+  height: 22px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
 }
 
 .switch input {
@@ -30,10 +34,10 @@
 .slider:before {
   position: absolute;
   content: '';
-  height: 19px;
-  width: 19px;
-  left: 2px;
-  bottom: 2px;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
   transition: 0.4s;
 }
@@ -42,12 +46,8 @@ input:checked + .slider {
   background-color: #1c3e6e;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #1c3e6e;
-}
-
 input:checked + .slider:before {
-  transform: translateX(24px);
+  transform: translateX(18px);
 }
 
 .slider.round {
@@ -58,15 +58,9 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.clock {
-  width: 1.5rem;
-  transform: rotate(-90deg);
-  margin-right: 0.5rem;
-}
-
 .toggle {
-  border-right: 1px solid black;
-  padding: 0.25rem 1rem;
+  border-right: 1px solid gray;
+  padding: 0 0.5rem;
   margin-right: 0.75rem;
   width: 5.5rem;
 }

@@ -1,0 +1,17 @@
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.testing-title {
+  width: 100px;
+  margin-right: 3rem;
+  white-space: nowrap;
+}
+
+.client-dropdown {
+  width: 130px;
+}

@@ -1,83 +1,136 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Radio from '../Radio/Radio';
 import Upload from '../Upload/Upload';
 import Toggle from '../Toggle/Toggle';
-import Icon from '@mdi/react';
-import { mdiClockTimeEightOutline } from '@mdi/js';
+import Client from '../Client/Client';
+import FileLoader from '../FileLoader/FileLoader';
 import './Modal.css';
+import { mdiClose } from '@mdi/js';
+import Icon from '@mdi/react';
 
-const Modal = () => {
+const Modal = ({ onClose }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.documentElement.classList.add('overflow-hidden');
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.documentElement.classList.remove('overflow-hidden');
+    };
+  }, [onClose]);
+
+  const handleModalClick = (e) => {
+    const modalContent = document.querySelector('.modal');
+    if (!modalContent.contains(e.target)) {
+      onClose();
+    }
+  };
+
+  const renderContent = () => {
+    if (isMobile) {
+      return <div className='divider' />;
+    }
+  };
+
   return (
-    <div className='modal-overlay'>
+    <div className='modal-overlay' onClick={handleModalClick}>
       <div className='modal'>
-        <button className='close-button'>&times;</button>
-        <h1 id='title'>Document Upload</h1>
+        <div className='close-button'>
+          <button onClick={onClose}>
+            <Icon path={mdiClose} size={1} color='white' />
+          </button>
+        </div>
+        <h1>Document Upload</h1>
+
         <div className='container'>
           <div id='column1'>
-            <div id='import' className='section'>
-              <Dropdown placeholder='Select Import Name:' />
-            </div>
+            <Dropdown
+              id='import-button'
+              placeholder='Select Import Name'
+              options={['Option 1', 'Option 2', 'Option 3']}
+              bold
+            />
+
+            <div className='divider' />
+
             <div>
               <p className='bold'>
                 Select a manifest that you'd like to import
               </p>
               <Upload />
+              <FileLoader />
             </div>
-            <div className='section'>
+
+            <div className='divider' />
+
+            <div>
               <p className='bold'>Elapse Data Checking:</p>
               <p className='dynamic'>No Elapsed Dates!</p>
             </div>
-            <div className='section'>
+
+            <div className='divider' />
+
+            <div>
               <p className='bold'>Tolerance Window:</p>
               <Toggle />
             </div>
           </div>
 
           <div id='column2'>
-            <div className='section'>
+            {renderContent()}
+            <div>
               <p className='bold'>Split schedule using social distancing?</p>
               <div className='radio-container'>
                 <Radio name='social-distancing' label1='Yes' label2='No' />
               </div>
             </div>
-            <div className='section'>
+
+            <div className='divider' />
+
+            <div>
               <p className='bold'>Location Checking:</p>
               <p className='dynamic'>All Available!</p>
             </div>
-            <div className='section'>
-              <p className='bold'>Client:</p>
-              <div className='radio-container'>
-                <Radio name='client' label1='Single' label2='Multiple' />
-              </div>
-              <p className='testing'>
-                Testing Center 1 <Dropdown placeholder='Select Client' />
-                <Icon path={mdiClockTimeEightOutline} className='clock' />
-              </p>
-              <p className='testing'>
-                Testing Center 2 <Dropdown placeholder='Select Client' />
-                <Icon path={mdiClockTimeEightOutline} className='clock' />
-              </p>
-              <p className='testing'>
-                Testing Center 3 <Dropdown placeholder='Select Client' />
-                <Icon path={mdiClockTimeEightOutline} className='clock' />
-              </p>
-              <p className='testing'>
-                Testing Center 4 <Dropdown placeholder='Select Client' />
-                <Icon path={mdiClockTimeEightOutline} className='clock' />
-              </p>
+
+            <div className='divider' />
+
+            <div>
+              <Client />
             </div>
           </div>
         </div>
 
         <div>
-          <p className='bold import-confirmation'>
-            Data in the import file is correct. Please press Continue to import.
-          </p>
+          <div className='bold import-text'>
+            <p>Data in the import file is correct.</p>
+            <p>Please press Continue to import.</p>
+          </div>
           <button className='bold submit-button continue'>
-            Continue import
+            Continue Import
           </button>
-          <button id='cancel' className='bold submit-button'>
+          <button id='cancel' className='bold submit-button' onClick={onClose}>
             Cancel
           </button>
         </div>
