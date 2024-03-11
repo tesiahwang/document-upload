@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiClockTimeEightOutline } from '@mdi/js';
-import './Client.css';
-import Radio from '../Radio/Radio';
 import Dropdown from '../Dropdown/Dropdown';
+import Radio from '../Radio/Radio';
+import './Client.css';
 
 const Client = () => {
   const [singleClient, setSingleClient] = useState(false);
@@ -12,9 +12,30 @@ const Client = () => {
     setSingleClient(value === 'Single');
   };
 
+  const renderClientInfo = (center) => (
+    <div key={center} className='client-info'>
+      <span className='testing-title'>Testing Center {center}</span>
+      <div className='client-dropdown'>
+        <Dropdown
+          placeholder='Select Client'
+          options={['Google', 'LinkedIn', 'Microsoft']}
+        />
+      </div>
+      <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
+    </div>
+  );
+
+  const renderClients = () => {
+    if (singleClient) {
+      return renderClientInfo(1);
+    } else {
+      return [1, 2, 3, 4].map((center) => renderClientInfo(center));
+    }
+  };
+
   return (
-    <div>
-      <p className='bold'>Client:</p>
+    <div className='client-container'>
+      <p className='client-header'>Client:</p>
       <div className='radio-container'>
         <Radio
           name='client'
@@ -23,31 +44,7 @@ const Client = () => {
           onChange={handleRadioChange}
         />
       </div>
-      {singleClient && (
-        <div className='client-info'>
-          <span className='testing-title'>Testing Center 1</span>
-          <div className='client-dropdown'>
-            <Dropdown
-              placeholder='Select Client'
-              options={['Google', 'LinkedIn', 'Microsoft']}
-            />
-          </div>
-          <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
-        </div>
-      )}
-      {!singleClient &&
-        [1, 2, 3, 4].map((center) => (
-          <div key={center} className='client-info'>
-            <span className='testing-title'>Testing Center {center}</span>
-            <div className='client-dropdown'>
-              <Dropdown
-                placeholder='Select Client'
-                options={['Google', 'LinkedIn', 'Microsoft']}
-              />
-            </div>
-            <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
-          </div>
-        ))}
+      {renderClients()}
     </div>
   );
 };

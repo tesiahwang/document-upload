@@ -10,9 +10,9 @@ const Radio = ({ name, label1, label2, onChange = () => {} }) => {
     <div className='radio-container'>
       <div className='radio-option'>
         <input
-          type='radio'
           id={label1}
           name={name}
+          type='radio'
           value={label1}
           onChange={handleChange}
         />
@@ -20,9 +20,9 @@ const Radio = ({ name, label1, label2, onChange = () => {} }) => {
       </div>
       <div className='radio-option'>
         <input
-          type='radio'
           id={label2}
           name={name}
+          type='radio'
           value={label2}
           onChange={handleChange}
         />

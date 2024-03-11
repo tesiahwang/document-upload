@@ -4,9 +4,9 @@ import Radio from '../Radio/Radio';
 import Upload from '../Upload/Upload';
 import Toggle from '../Toggle/Toggle';
 import Client from '../Client/Client';
-import './Modal.css';
 import { mdiClose } from '@mdi/js';
 import Icon from '@mdi/react';
+import './Modal.css';
 
 const Modal = ({ onClose }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,14 +45,14 @@ const Modal = ({ onClose }) => {
     }
   };
 
-  const renderContent = () => {
+  const handleImportTextVisibility = (isVisible) => {
+    setImportTextVisible(isVisible);
+  };
+
+  const renderDividerForMobile = () => {
     if (isMobile) {
       return <div className='divider' />;
     }
-  };
-
-  const handleImportTextVisibleChange = (isVisible) => {
-    setImportTextVisible(isVisible);
   };
 
   return (
@@ -80,9 +80,7 @@ const Modal = ({ onClose }) => {
               <p className='bold'>
                 Select a manifest that you'd like to import
               </p>
-              <Upload
-                onImportTextVisibleChange={handleImportTextVisibleChange}
-              />
+              <Upload onImportTextVisibleChange={handleImportTextVisibility} />
             </div>
 
             <div className='divider' />
@@ -101,7 +99,7 @@ const Modal = ({ onClose }) => {
           </div>
 
           <div id='column2'>
-            {renderContent()}
+            {renderDividerForMobile()}
             <div>
               <p className='bold'>Split schedule using social distancing?</p>
               <div className='radio-container'>

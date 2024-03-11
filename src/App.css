@@ -1,29 +1,25 @@
 .App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   height: 100vh;
+  justify-content: center;
+  text-align: center;
 }
 
-.upload-button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+.button {
   background-color: #1c3e6e;
-  color: white;
   border: none;
   border-radius: 0.5rem;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  font-size: 1.2rem;
   font-weight: bold;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.upload-button:hover {
+.button:hover {
   background-color: #0f1f3a;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .dynamic {
@@ -31,14 +27,18 @@
   font-weight: bold;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 button {
-  cursor: pointer;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  cursor: pointer;
 }
 
 span {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 0.5rem;
 }
 

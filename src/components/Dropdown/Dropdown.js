@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Dropdown.css';
 import { mdiChevronDown } from '@mdi/js';
 import Icon from '@mdi/react';
@@ -25,9 +25,9 @@ const Dropdown = ({ placeholder, options, bold }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
     if (!isOpen) {
-      window.addEventListener('click', handleClickOutside);
+      window.addEventListener('click', handleOutsideClick);
     } else {
-      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('click', handleOutsideClick);
     }
   };
 
@@ -40,7 +40,7 @@ const Dropdown = ({ placeholder, options, bold }) => {
     closeDropdown();
   };
 
-  const handleClickOutside = (event) => {
+  const handleOutsideClick = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       closeDropdown();
     }

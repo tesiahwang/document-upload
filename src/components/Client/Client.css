@@ -1,17 +1,24 @@
-.client-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 1rem;
+.client-container {
   margin-top: 1rem;
-}
-
-.testing-title {
-  width: 100px;
-  margin-right: 3rem;
-  white-space: nowrap;
 }
 
 .client-dropdown {
   width: 130px;
+}
+
+.client-header {
+  font-weight: bold;
+}
+
+.client-info {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.testing-title {
+  margin-right: 3rem;
+  white-space: nowrap;
+  width: 100px;
 }

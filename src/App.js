@@ -1,6 +1,6 @@
-import './App.css';
+import React, { useState, useEffect, useCallback } from 'react';
 import Modal from './components/Modal/Modal';
-import { useState, useEffect, useCallback } from 'react';
+import './App.css';
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className='App'>
-      <button className='upload-button' onClick={openModal}>
+      <button className='button' onClick={openModal}>
         Upload a Document
       </button>
       {modalOpen && <Modal onClose={closeModal} />}

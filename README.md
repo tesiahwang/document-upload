@@ -1,24 +1,30 @@
 # Document Upload
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The application offers a user-friendly interface and responsive design to ensure compatibility across different devices.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It provides a user-friendly interface with responsive design to ensure compatibility across various devices.
 
 ## Key Features
 
+### Modal
+
+- Close modal by clicking the gray overlay, pressing the Esc key, or clicking the close button [X]
+
+### File Selection
+
+- Browse for files by clicking the designated area or drag and drop files directly onto the box
+
 ### Upload Status
 
-- Displays file details and status bar once upload process is initiated
-- Automatically displays file size in either MB or KB, depending on the file size
+- Displays file details and progress bar upon initiating upload process
+- Automatically converts file size to either MB or KB, depending on the file size
 
 ### Client
 
-- Selecting "Single" radio button collapses number of Testing Centers to one
-- Selecting "Multiple" radio button expands back to 4 Tesing Centers
+- Allows dynamic adjustment of the number of testing centers based on user selection
 
 ### Data Import Text
 
-- Displays informative text upon completion of the file upload process
-- Text will appear once file upload is complete
+- Provides informative text upon completion of file upload process
 
 ### Deployment
 
-Access deployed version via Vercel @ [Document Upload](https://document-upload-ecru.vercel.app/)
+Deployed via Vercel @ [Document Upload](https://document-upload-ecru.vercel.app/)

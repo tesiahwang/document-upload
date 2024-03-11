@@ -1,18 +1,18 @@
 .dropbtn {
-  outline: 1px solid gray;
+  align-items: center;
+  background: transparent;
   border: none;
   border-radius: 0.5rem;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
   cursor: pointer;
-  width: 100%;
-  background: transparent;
+  display: flex;
+  height: 2.5rem;
+  justify-content: space-between;
+  outline: 1px solid gray;
+  padding: 0.75rem;
   position: relative;
-  height:2.5rem;
   transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .dropbtn:hover {
@@ -25,33 +25,25 @@
   border-bottom-right-radius: 0;
 }
 
-.dropdown {
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  display: inline-block;
-  position: relative;
-}
-
 .dropdown-content {
-  outline: solid 1px gray;
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0; 
   background-color: #f1f1f1;
-  width: 100%;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+  display: none;
+  left: 0;
+  outline: solid 1px gray;
+  overflow: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
 }
 
 .dropdown-content a {
-  padding: 0.5rem;
-  text-decoration: none;
   display: block;
   outline: solid 1px #dbdbdb;
+  padding: 0.5rem;
+  text-decoration: none;
 }
 
 .dropdown-content a:hover {

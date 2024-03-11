@@ -4,14 +4,32 @@
 }
 
 .radio-option {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .radio-container input[type='radio'] {
-  width: 1.5rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid #1c3e6e;
+  border-radius: 50%;
+  cursor: pointer;
   height: 1.5rem;
   margin-right: 0.5rem;
-  cursor: pointer;
-  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 1.5rem;
+}
+
+.radio-container input[type='radio']:checked::before {
+  background-color: #1c3e6e;
+  border-radius: 50%;
+  content: '';
+  height: 0.75rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.75rem;
 }

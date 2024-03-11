@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Upload.css';
 import Icon from '@mdi/react';
 import { mdiFileDocument, mdiFileImage } from '@mdi/js';
+import './Upload.css';
 
 const Upload = ({ onImportTextVisibleChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -12,6 +12,8 @@ const Upload = ({ onImportTextVisibleChange }) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedFile({ name: file.name, size: file.size });
+      setProgress(0);
+      onImportTextVisibleChange(false);
     }
   };
 
@@ -95,7 +97,9 @@ const Upload = ({ onImportTextVisibleChange }) => {
             <span className='loading'>
               <p>{selectedFile.name}</p>
               <p className='file-size'>
-                {(selectedFile.size / (1024 * 1024)).toFixed(1)}MB
+                {selectedFile.size < 100000
+                  ? (selectedFile.size / 1000).toFixed(1) + 'KB'
+                  : (selectedFile.size / 1000000).toFixed(1) + 'MB'}
               </p>
             </span>
             <div className='progress-bar' style={{ width: `${progress}%` }} />

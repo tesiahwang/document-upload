@@ -13,14 +13,14 @@ const Toggle = () => {
   return (
     <div className='toggle-container'>
       <label className='switch'>
-        <input type='checkbox' onChange={handleChange} checked={isToggled} />
+        <input type='checkbox' checked={isToggled} onChange={handleChange} />
         <span className='slider round'></span>
       </label>
-      <p className='toggle'>Toggle {isToggled ? 'ON' : 'OFF'}</p>
-      <p className='tolerance'>
+      <p className='toggle'>{isToggled ? 'Toggle ON' : 'Toggle OFF'}</p>
+      <div className='tolerance'>
         <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
         <p>Select Tolerance Level</p>
-      </p>
+      </div>
     </div>
   );
 };
