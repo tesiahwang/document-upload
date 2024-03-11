@@ -4,13 +4,13 @@ import Radio from '../Radio/Radio';
 import Upload from '../Upload/Upload';
 import Toggle from '../Toggle/Toggle';
 import Client from '../Client/Client';
-import FileLoader from '../FileLoader/FileLoader';
 import './Modal.css';
 import { mdiClose } from '@mdi/js';
 import Icon from '@mdi/react';
 
 const Modal = ({ onClose }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [importTextVisible, setImportTextVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,13 +31,10 @@ const Modal = ({ onClose }) => {
         onClose();
       }
     };
-
-    document.documentElement.classList.add('overflow-hidden');
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.documentElement.classList.remove('overflow-hidden');
     };
   }, [onClose]);
 
@@ -52,6 +49,10 @@ const Modal = ({ onClose }) => {
     if (isMobile) {
       return <div className='divider' />;
     }
+  };
+
+  const handleImportTextVisibleChange = (isVisible) => {
+    setImportTextVisible(isVisible);
   };
 
   return (
@@ -79,20 +80,21 @@ const Modal = ({ onClose }) => {
               <p className='bold'>
                 Select a manifest that you'd like to import
               </p>
-              <Upload />
-              <FileLoader />
+              <Upload
+                onImportTextVisibleChange={handleImportTextVisibleChange}
+              />
             </div>
 
             <div className='divider' />
 
-            <div>
+            <div className='no-gaps'>
               <p className='bold'>Elapse Data Checking:</p>
               <p className='dynamic'>No Elapsed Dates!</p>
             </div>
 
             <div className='divider' />
 
-            <div>
+            <div className='no-gaps'>
               <p className='bold'>Tolerance Window:</p>
               <Toggle />
             </div>
@@ -109,7 +111,7 @@ const Modal = ({ onClose }) => {
 
             <div className='divider' />
 
-            <div>
+            <div className='no-gaps'>
               <p className='bold'>Location Checking:</p>
               <p className='dynamic'>All Available!</p>
             </div>
@@ -123,10 +125,12 @@ const Modal = ({ onClose }) => {
         </div>
 
         <div>
-          <div className='bold import-text'>
-            <p>Data in the import file is correct.</p>
-            <p>Please press Continue to import.</p>
-          </div>
+          {importTextVisible && (
+            <div className='bold import-text'>
+              <p>Data in the import file is correct.</p>
+              <p>Please press Continue to import.</p>
+            </div>
+          )}
           <button className='bold submit-button continue'>
             Continue Import
           </button>

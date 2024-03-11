@@ -17,8 +17,10 @@ const Toggle = () => {
         <span className='slider round'></span>
       </label>
       <p className='toggle'>Toggle {isToggled ? 'ON' : 'OFF'}</p>
-      <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
-      <p>Select Tolerance Level</p>
+      <p className='tolerance'>
+        <Icon path={mdiClockTimeEightOutline} className='clock' size={1} />
+        <p>Select Tolerance Level</p>
+      </p>
     </div>
   );
 };

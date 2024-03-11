@@ -1,7 +1,7 @@
-/* Toggle.css */
 .toggle-container {
   display: flex;
   align-items: center;
+  margin: 0.5rem 0;
 }
 
 .switch {
@@ -61,6 +61,10 @@ input:checked + .slider:before {
 .toggle {
   border-right: 1px solid gray;
   padding: 0 0.5rem;
-  margin-right: 0.75rem;
   width: 5.5rem;
+}
+
+.tolerance {
+  padding-left: 0.75rem;
+  gap: 0.25rem;
 }

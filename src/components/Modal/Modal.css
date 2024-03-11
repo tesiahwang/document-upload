@@ -27,6 +27,7 @@
 .container {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-bottom: 1rem;
 }
 
 .close-button {
@@ -121,6 +122,16 @@
   font-size: medium;
 }
 
+.no-gaps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.no-gaps p {
+  margin: 0.25rem 0;
+}
+
 h1 {
   font-size: xx-large;
   justify-self: center;
@@ -140,16 +151,19 @@ p {
     justify-self: center;
   }
   .modal {
-    padding: 2rem 0;
+    padding: 2rem;
   }
   #column1 {
     padding-right: 0;
   }
   .import-text {
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
+    display: grid;
+    margin: 2rem;
   }
   .import-text p {
-    height: 0;
+    margin: 0;
+  }
+  .submit-button {
+    margin: 0.25rem;
   }
 }
