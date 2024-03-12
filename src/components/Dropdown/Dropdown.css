@@ -39,14 +39,15 @@
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content p {
   display: block;
   outline: solid 1px #dbdbdb;
   padding: 0.5rem;
+  margin: 0;
   text-decoration: none;
 }
 
-.dropdown-content a:hover {
+.dropdown-content p:hover {
   background-color: #ddd;
 }
 

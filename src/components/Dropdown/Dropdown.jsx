@@ -56,9 +56,9 @@ const Dropdown = ({ placeholder, options, bold }) => {
       <Icon path={mdiChevronDown} size={1} />
       <div className={`dropdown-content ${isOpen ? 'show' : ''}`}>
         {options.map((option, index) => (
-          <a key={index} onClick={() => handleOptionClick(option)}>
+          <p key={index} onClick={() => handleOptionClick(option)}>
             {option}
-          </a>
+          </p>
         ))}
       </div>
     </button>
